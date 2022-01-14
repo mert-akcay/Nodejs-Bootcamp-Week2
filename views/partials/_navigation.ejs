@@ -21,13 +21,18 @@
                 <% } %>
             </ul>
 
+            <% if(!isAuth) { %>
             <div class="d-none d-lg-block">
-                <% if(!isAuth) { %>
-                <a href="/login">Sign In</a>
-                <% }else{ %>
-                <a href="/logout">Sign Out</a>
-                <% } %>
+                <a href="/login">Sign-In</a>
             </div>
+            <div style="padding-left:15px;" class="d-none d-lg-block">
+                <a href="/register">Sign-Up</a>
+            </div>
+            <% }else{ %>
+            <div style="padding-left:15px;" class="d-none d-lg-block">
+                <a href="/logout">Sign-Out</a>
+            </div>
+            <% } %>
         </div>
     </div>
 </nav>

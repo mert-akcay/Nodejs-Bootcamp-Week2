@@ -65,7 +65,11 @@ https://www.tooplate.com/view/2127-little-fashion
 
                                             <label for="password">Password</label>
                                         </div>
-
+                                        <% if(locals.err) { %>
+                                        <div class="alert alert-warning fade show mb-0 mt-4" role="alert">
+                                            <strong>Invalid Credentials!</strong> <%= err %>
+                                        </div>
+                                        <% } %>
                                         <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
                                             Sign in
                                         </button>

@@ -65,12 +65,12 @@ exports.login = async (req, res) => {
 
     //Check if the user exists
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).send("User not found.");
+    if (!user) throw "User not found!";
 
     //Check if the password is valid
     let passwordIsValid = await bcrypt.compare(password, user.password);
-    if (!passwordIsValid)
-      return res.status(401).send("Password is not correct.");
+    if (!passwordIsValid && errors.length == 0)
+      throw "Password is not correct.";
 
     //Create a JWT token
     let token = jwt.sign(
@@ -93,6 +93,7 @@ exports.login = async (req, res) => {
   } catch (err) {
     //If any error occures
     console.log(err);
+    res.render("sign-in", { err });
   }
 };
 
