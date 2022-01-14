@@ -69,7 +69,7 @@ exports.login = async (req, res) => {
 
     //Check if the password is valid
     let passwordIsValid = await bcrypt.compare(password, user.password);
-    if (!passwordIsValid && errors.length == 0)
+    if (!passwordIsValid)
       throw "Password is not correct.";
 
     //Create a JWT token
